@@ -21,8 +21,8 @@ export const MapView = ({
   };
 
   useEffect(() => {
-    const newPlaces = placesWithGeo.map((place) => {
-      if (place.id === selectedPlace.id) {
+    const newPlaces = placesWithGeo?.map((place) => {
+      if (place.id === selectedPlace?.id) {
         return selectedPlace;
       }
       return place;
@@ -67,7 +67,7 @@ export const MapView = ({
             placesWithGeo?.map((place) => (
               <AdvancedMarker
                 onClick={() => handleOpenPlaceInformation(place)}
-                key={place.id}
+                key={place?.id}
                 position={{
                   lat: place?.address?.lat || 22,
                   lng: place?.address?.lng || 22,

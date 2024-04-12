@@ -64,10 +64,10 @@ export const PlaceInformation = ({
       }}
     >
       <span onClick={() => setIsOpenPanel(false)}>X</span>
-      <h1>{selectedPlace.name}</h1>
+      <h1>{selectedPlace?.name}</h1>
 
       <div>
-        {selectedPlace.todo.map((task) => {
+        {selectedPlace?.todo?.map((task) => {
           return (
             <div
               key={task.id}
@@ -81,16 +81,16 @@ export const PlaceInformation = ({
               <div>
                 <input
                   type='checkbox'
-                  title={task.description}
+                  title={task?.description}
                   id={task.id}
-                  checked={task.checked}
+                  checked={task?.checked}
                   onChange={(e) => {
-                    handleCheck(task.id, e.target.checked);
+                    handleCheck(task?.id, e.target.checked);
                   }}
                 />
-                <label htmlFor={task.id}>{task.description}</label>
+                <label htmlFor={task?.id}>{task?.description}</label>
               </div>
-              <span onClick={() => handleDeleteTask(task.id)}>Delete</span>
+              <span onClick={() => handleDeleteTask(task?.id)}>Delete</span>
             </div>
           );
         })}

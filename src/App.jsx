@@ -4,19 +4,18 @@ import axios from 'axios';
 import { TravelSelection } from './components/TravelSelection';
 const App = () => {
   const data = JSON.parse(localStorage.getItem('data'));
-  console.log(data);
+
   const [isMapView, setIsMapView] = useState(false);
 
-  const [travels, setTravels] = useState(data.travels);
-  const [selectedTravel, setSelectedTravel] = useState(data.travels[0]);
-  const [placesWithGeo, setPlacesWithGeo] = useState(data.travels[0].places);
-  // localStorage.setItem('data', JSON.stringify(data));
-  useEffect(() => {
+  const [travels, setTravels] = useState(data?.travels);
+  const [selectedTravel, setSelectedTravel] = useState(data?.travels?.[0]);
+  const [placesWithGeo, setPlacesWithGeo] = useState(data?.travels?.[0]?.places);
+?  useEffect(() => {
     const getGeo = async () => {
-      if (!selectedTravel.places || selectedTravel.places.length === 0) return;
+      if (!selectedTravel?.places || selectedTravel?.places?.length === 0) return;
 
       const updatedPlaces = await Promise.all(
-        selectedTravel.places.map(async (place) => {
+        selectedTravel?.places?.map(async (place) => {
           try {
             const response = await axios.get(
               `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
@@ -24,7 +23,7 @@ const App = () => {
               )}&key=AIzaSyDCh_ofD6rCDP9S9K3LpQIjW2QHeoU8vmk`
             );
 
-            const location = response.data?.results?.[0]?.geometry?.location;
+            const location = response?.data?.results?.[0]?.geometry?.location;
             return { ...place, address: location };
           } catch (error) {
             console.error('Error fetching geocode:', error);
@@ -44,8 +43,8 @@ const App = () => {
   }, [travels]);
   console.log(placesWithGeo);
   useEffect(() => {
-    const newTravels = travels.map((travel) => {
-      if (travel.id === selectedTravel.id) {
+    const newTravels = travels?.map((travel) => {
+      if (travel?.id === selectedTravel?.id) {
         return {
           ...selectedTravel,
           places: placesWithGeo,
@@ -55,8 +54,7 @@ const App = () => {
     });
     setTravels(newTravels);
   }, [placesWithGeo]);
-  console.log(placesWithGeo);
-  console.log(travels);
+
   return (
     <div>
       {isMapView ? (
