@@ -9,10 +9,13 @@ const App = () => {
 
   const [travels, setTravels] = useState(data?.travels);
   const [selectedTravel, setSelectedTravel] = useState(data?.travels?.[0]);
-  const [placesWithGeo, setPlacesWithGeo] = useState(data?.travels?.[0]?.places);
-?  useEffect(() => {
+  const [placesWithGeo, setPlacesWithGeo] = useState(
+    data?.travels?.[0]?.places
+  );
+  useEffect(() => {
     const getGeo = async () => {
-      if (!selectedTravel?.places || selectedTravel?.places?.length === 0) return;
+      if (!selectedTravel?.places || selectedTravel?.places?.length === 0)
+        return;
 
       const updatedPlaces = await Promise.all(
         selectedTravel?.places?.map(async (place) => {
