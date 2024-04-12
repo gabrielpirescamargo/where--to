@@ -10,7 +10,6 @@ export const PlaceInformation = ({
 
   const handleCheck = (id, checked) => {
     const newTodo = selectedPlace.todo.map((task) => {
-      console.log(task.id, id);
       if (task.id === id) {
         return {
           ...task,
@@ -21,18 +20,20 @@ export const PlaceInformation = ({
     });
 
     setSelectedPlace((prev) => {
+      const oldValue = prev || [];
       return {
-        ...prev,
+        ...oldValue,
         todo: newTodo,
       };
     });
   };
   const handleCreateTask = () => {
     setSelectedPlace((prev) => {
+      const oldValue = prev.todo || [];
       return {
         ...prev,
         todo: [
-          ...[prev.todo, []],
+          ...oldValue,
           { id: uuidv4(), checked: false, description: newTodoName },
         ],
       };
@@ -42,9 +43,10 @@ export const PlaceInformation = ({
 
   const handleDeleteTask = (id) => {
     setSelectedPlace((prev) => {
+      const oldValue = prev || [];
       const newTodo = prev.todo.filter((task) => task.id !== id);
       return {
-        ...[prev || []],
+        ...oldValue,
         todo: newTodo,
       };
     });

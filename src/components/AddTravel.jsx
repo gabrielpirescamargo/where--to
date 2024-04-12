@@ -13,7 +13,8 @@ export const AddTravel = ({ setTravels, travels, setNewTravelModal }) => {
       id: uuidv4(),
       places: [],
     };
-    setTravels([...[travels || []], newTravel]);
+    const oldValue = travels || [];
+    setTravels([...oldValue, newTravel]);
     setNewTravelModal(false);
   };
   return (
