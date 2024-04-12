@@ -32,7 +32,7 @@ export const PlaceInformation = ({
       return {
         ...prev,
         todo: [
-          ...prev.todo,
+          ...[prev.todo, []],
           { id: uuidv4(), checked: false, description: newTodoName },
         ],
       };
@@ -44,7 +44,7 @@ export const PlaceInformation = ({
     setSelectedPlace((prev) => {
       const newTodo = prev.todo.filter((task) => task.id !== id);
       return {
-        ...prev,
+        ...[prev || []],
         todo: newTodo,
       };
     });
