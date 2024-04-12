@@ -12,14 +12,14 @@ export const TravelSelection = ({
     <div
       style={{
         width: '100vw',
-        height: '100vh',
+        height: '90vh',
         position: 'absolute',
         top: 0,
         left: 0,
       }}
     >
-      <header style={{ color: 'white', width: '100%', height: 80 }}>
-        <h1 style={{ padding: 16, margin: 0 }}>Travels</h1>
+      <header style={{ color: 'white', height: 80 }}>
+        <h1 style={{ padding: 16, margin: 0 }}>Viagens</h1>
       </header>
       <div
         style={{

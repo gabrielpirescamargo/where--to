@@ -42,7 +42,7 @@ export const MapView = ({
           left: 0,
           top: 0,
           fontWeight: 'bold',
-          width: '100vw',
+          width: '90vw',
           zIndex: 999,
         }}
         onClick={() => {

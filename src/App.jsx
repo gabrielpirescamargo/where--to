@@ -37,7 +37,6 @@ const App = () => {
 
       setPlacesWithGeo(updatedPlaces);
     };
-
     getGeo();
   }, [selectedTravel]);
 
