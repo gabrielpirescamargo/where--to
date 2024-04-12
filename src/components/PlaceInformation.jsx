@@ -82,7 +82,7 @@ export const PlaceInformation = ({
                 <input
                   type='checkbox'
                   title={task?.description}
-                  id={task.id}
+                  id={task?.id}
                   checked={task?.checked}
                   onChange={(e) => {
                     handleCheck(task?.id, e.target.checked);

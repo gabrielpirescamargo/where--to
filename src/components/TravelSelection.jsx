@@ -29,7 +29,7 @@ export const TravelSelection = ({
           padding: 20,
         }}
       >
-        {travels.map((travel) => {
+        {travels?.map((travel) => {
           return (
             <div
               key={travel.id}
@@ -50,8 +50,8 @@ export const TravelSelection = ({
                 setIsMapView(true);
               }}
             >
-              <span style={{ fontSize: 24 }}> {travel.name}</span>
-              <span style={{ fontSize: 50 }}> {travel.flag}</span>
+              <span style={{ fontSize: 24 }}> {travel?.name}</span>
+              <span style={{ fontSize: 50 }}> {travel?.flag}</span>
             </div>
           );
         })}
