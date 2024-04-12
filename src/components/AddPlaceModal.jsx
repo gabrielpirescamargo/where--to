@@ -11,7 +11,7 @@ export const AddPlaceModal = ({ setIsOpenAddPlace, setPlacesWithGeo }) => {
       todo: [],
     };
     setPlacesWithGeo((prev) => {
-      const oldValue = prev || {};
+      const oldValue = prev || [];
       return [...oldValue, newPlace];
     });
   };
